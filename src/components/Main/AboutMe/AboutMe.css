@@ -1,0 +1,181 @@
+.about-me {
+  height: 1079px;
+  margin: 0 auto;
+  width: 100%;
+  box-sizing: border-box;
+  padding: 0 70px;
+  background-color: #202020;
+}
+
+.about-me__title {
+  height: 27px;
+  font-family: "Inter", Arial, Helvetica, sans-serif;
+  font-weight: 400;
+  font-size: 22px;
+  line-height: 26.63px;
+  margin: 0;
+  padding-top: 110px;
+  margin-right: auto;
+  padding-bottom: 23px;
+  color: white;
+}
+
+.about-me__line {
+  border: 1px solid #dadada;
+}
+
+.about-me__container-info {
+  display: flex;
+  margin: 0 auto;
+  margin-top: 66px;
+  flex-wrap: wrap;
+}
+
+.about-me__container-info_text {
+  margin-right: auto;
+}
+
+.about-me__title_name {
+  width: 600px;
+  height: 58px;
+  margin: 0 0 18px 0;
+  font-family: "Inter", Arial, Helvetica, sans-serif;
+  font-weight: 400;
+  font-size: 50px;
+  line-height: 58px;
+  color: white;
+}
+
+.about-me__paragraph {
+  width: 600px;
+  height: 20px;
+  margin: 0 0 26px 0;
+  font-family: "Inter", Arial, Helvetica, sans-serif;
+  font-weight: 500;
+  font-size: 18px;
+  line-height: 20px;
+  color: white;
+}
+
+.about-me__text {
+  width: 600px;
+  margin: 0 0 26px 0;
+  font-family: "Inter", Arial, Helvetica, sans-serif;
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 22px;
+  color: white;
+}
+
+.about-me__image {
+  width: 270px;
+  height: 327px;
+  background-image: url("../../../images/WhatsApp\ Image\ 2022-01-11\ at\ 20.00.43.jpeg");
+  background-repeat: no-repeat;
+  background-size: cover;
+  grid-column-start: 2;
+  grid-column-end: 2;
+  grid-row-start: 1;
+  grid-row-end: 5;
+  border-radius: 10px;
+}
+
+.about-me__container-link {
+  height: 18px;
+  font-family: "Inter", Arial, Helvetica, sans-serif;
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 16.94px;
+  color: white;
+  cursor: pointer;
+}
+
+.about-me__container-link {
+  display: flex;
+}
+
+.about-me__link {
+  font-family: "Inter", Arial, Helvetica, sans-serif;
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 16.94px;
+  color: white;
+  cursor: pointer;
+  margin-right: 20px;
+  text-decoration: none;
+}
+
+@media screen and (max-width: 1210px) {
+  .about-me {
+    height: 994px;
+    margin: 0 auto;
+    width: 100%;
+    box-sizing: border-box;
+    padding: 0 50px;
+  }
+
+  .about-me__paragraph {
+    width: 600px;
+    height: 20px;
+    margin: 0 0 26px 0;
+    font-family: "Inter", Arial, Helvetica, sans-serif;
+    font-weight: 500;
+    font-size: 18px;
+    line-height: 20px;
+    color: white;
+  }
+
+  .about-me__text {
+    width: 600px;
+    margin: 0 0 26px 0;
+    font-family: "Inter", Arial, Helvetica, sans-serif;
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 22px;
+    color: white;
+  }
+}
+
+@media screen and (max-width: 1050px) {
+
+  .about-me__title_name {
+    width: 364px;
+    height: 58px;
+    margin: 0 0 18px 0;
+    font-family: "Inter", Arial, Helvetica, sans-serif;
+    font-weight: 400;
+    font-size: 50px;
+    line-height: 58px;
+    color: white;
+  }
+
+  .about-me__paragraph {
+    width: 364px;
+    height: 20px;
+    margin: 0 0 26px 0;
+    font-family: "Inter", Arial, Helvetica, sans-serif;
+    font-weight: 500;
+    font-size: 18px;
+    line-height: 20px;
+    color: white;
+  }
+
+  .about-me__text {
+    width: 364px;
+    margin: 0 0 26px 0;
+    font-family: "Inter", Arial, Helvetica, sans-serif;
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 22px;
+    color: white;
+  }
+
+  .about-me__container-info {
+    grid-column-gap: 49px;
+  }
+
+  .about-me__image {
+    width: 255px;
+    height: 307px;
+  }
+}
