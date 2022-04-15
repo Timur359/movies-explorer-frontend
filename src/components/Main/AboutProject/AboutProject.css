@@ -33,7 +33,6 @@
 }
 
 .about-project__paragraph {
-  height: 24px;
   font-family: "Inter", Arial, Helvetica, sans-serif;
   font-weight: 400;
   font-size: 20px;
@@ -103,7 +102,7 @@
 .about-project__box_graph {
   box-sizing: border-box;
   display: flex;
-  margin-bottom: 141px;
+  padding-bottom: 141px;
 }
 
 @media screen and (max-width: 1240px) {
@@ -155,9 +154,6 @@
     margin: 0 auto;
   }
 
-  .about-project__box_graph {
-    margin-bottom: 90px;
-  }
 }
 
 @media screen and (max-width: 766px) {
@@ -174,6 +170,11 @@
 }
 
   @media screen and (max-width: 500px) {
+
+    .about-project {
+      padding: 0 18px;
+    }
+
     .about-project__title {
       padding-top: 70px;
       margin-bottom: 28px;

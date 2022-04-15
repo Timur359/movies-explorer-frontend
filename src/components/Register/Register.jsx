@@ -9,7 +9,7 @@ const Register = () => {
     <Auth
       text={"Уже зарегестрированы ?"}
       textBtn={"Войти"}
-      btnUrl={"sign-in"}
+      btnUrl={"/sign-in"}
       textAction={"Зарегестрироваться"}
       children={
         <>

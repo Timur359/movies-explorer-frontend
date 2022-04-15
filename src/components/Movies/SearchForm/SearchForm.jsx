@@ -14,14 +14,16 @@ const SearchForm = () => (
         <button className="search-form__button">Найти</button>
       </div>
       <div className="search-form__line"></div>
-      <label className="search-form__switch">
-        <input type="checkbox" />
-        <span className="search-form__slide round"></span>
-      </label>
-      <br></br>
-      <p className="header__paragraph-main search-form__paragraph">
-        Короткометражки
-      </p>
+      <div className="search-form__box">
+        <label className="search-form__switch">
+          <input type="checkbox" />
+          <span className="search-form__slide round"></span>
+        </label>
+        <br></br>
+        <p className="header__paragraph-main search-form__paragraph">
+          Короткометражки
+        </p>
+      </div>
     </div>
     <div className="search-form__line-end"></div>
   </div>

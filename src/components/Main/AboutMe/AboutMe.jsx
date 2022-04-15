@@ -25,10 +25,20 @@ const AboutMe = () => (
       <div className="about-me__image"></div>
     </div>
     <div className="about-me__container-link">
-      <a href="https://www.facebook.com/" className="about-me__link">
+      <a
+        target="_blank"
+        href="https://www.facebook.com/"
+        className="about-me__link"
+        rel="noreferrer"
+      >
         Facebook
       </a>
-      <a href="https://github.com/Timur359" className="about-me__link">
+      <a
+        target="_blank"
+        href="https://github.com/Timur359"
+        className="about-me__link"
+        rel="noreferrer"
+      >
         GitHub
       </a>
     </div>

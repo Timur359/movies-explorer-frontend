@@ -75,3 +75,65 @@
   color: #8b8b8b;
   margin: 0 311px 16px 16px;
 }
+
+@media screen and (max-width: 500px) {
+
+  .movies-card {
+    width: 300px;
+    height: 237px;
+    display: flex;
+    flex-wrap: wrap;
+    margin: 0 auto;
+  }
+
+  .movies-card__image {
+    width: 300px;
+    height: 168px;
+  }
+
+  .movies-card__name {
+    width: 240px;
+    font-family: "Inter", Arial, Helvetica, sans-serif;
+    font-weight: 500;
+    font-size: 12px;
+    line-height: 14.52px;
+    color: white;
+    margin: 14px 6px 14px 14px;
+  }
+
+  .movies-card__time {
+    width: 33px;
+    font-family: "Inter", Arial, Helvetica, sans-serif;
+    font-weight: 400;
+    font-size: 10px;
+    line-height: 12.1px;
+    color: #8b8b8b;
+    margin: 0 253px 14px 14px;
+  }
+
+  .movies-card__like {
+    width: 30px;
+    height: 30px;
+    background-image: url("../../../images/like.svg");
+    background-repeat: no-repeat;
+    background-size: cover;
+    margin: 7px 10px 6px 0;
+    padding: 10px 8px 8px 8px;
+    border: none;
+    background-color: #222222;
+    cursor: pointer;
+  }
+
+  .movies-card__like_active {
+    width: 30px;
+    height: 30px;
+    background-image: url("../../../images/like-active.svg");
+    background-repeat: no-repeat;
+    background-size: cover;
+    margin: 9px 16px 10px 0;
+    border: none;
+    background-color: #222222;
+    cursor: pointer;
+  }
+
+}

@@ -21,6 +21,10 @@
   margin: 50px auto 80px auto;
 }
 
-@media screen and (max-width:1140) {
+@media screen and (max-width:430px) {
+
+  .button-more__button {
+    width: 240px;
+  }
 
 }

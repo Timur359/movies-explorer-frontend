@@ -9,8 +9,10 @@ const Portfolio = () => (
     <h5 className="portfolio__title">Портфолио</h5>
     <div className="portfolio__box-link">
       <a
+        target="_blank"
         href="https://github.com/Timur359/dodo-pizza"
         className="portfolio__link"
+        rel="noreferrer"
       >
         Статичный сайт
       </a>
@@ -19,8 +21,10 @@ const Portfolio = () => (
     <div className="portfolio__line"></div>
     <div className="portfolio__box-link">
       <a
+        target="_blank"
         href="https://github.com/Timur359/Mesto_React"
         className="portfolio__link"
+        rel="noreferrer"
       >
         Адаптивный сайт
       </a>
@@ -29,8 +33,10 @@ const Portfolio = () => (
     <div className="portfolio__line"></div>
     <div className="portfolio__box-link">
       <a
+        target="_blank"
         href="https://github.com/Timur359/ToDo-TypeScript"
         className="portfolio__link"
+        rel="noreferrer"
       >
         Одностраничное приложение
       </a>

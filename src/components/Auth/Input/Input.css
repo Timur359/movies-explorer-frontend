@@ -1,5 +1,7 @@
 .input {
   min-height: 156px;
+  width: 500px;
+  margin: 0 auto;
 }
 
 .input__name {
@@ -21,8 +23,8 @@
   border: none;
   outline: none;
   margin: 0 auto 10px 0;
-  width: 396px;
   padding: 0;
+  width: 500px;
 }
 
 .input__line {
@@ -33,4 +35,16 @@
 .input__line:last-of-type {
   border: 1px solid #424242;
   margin-bottom: 42px;
+}
+
+@media screen and (max-width: 550px) {
+
+  .input {
+    width: 260px;
+  }
+
+  .input__field {
+    width: 260px;
+  }
+
 }

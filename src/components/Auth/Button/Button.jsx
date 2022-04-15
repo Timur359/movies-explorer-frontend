@@ -10,9 +10,11 @@ const Button = ({ text, textBtn, btnUrl, textAction }) => (
     </button>
     <div className="button__button_info">
       <p className="button__button_text">{text}</p>
-      <Link to={btnUrl} className="button__button_register">
-        {textBtn}
-      </Link>
+      <nav>
+        <Link to={btnUrl} className="button__button_register">
+          {textBtn}
+        </Link>
+      </nav>
     </div>
   </div>
 );

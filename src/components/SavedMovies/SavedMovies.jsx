@@ -7,12 +7,14 @@ import Header from "../Parts/Header/Header";
 
 import "./SavedMovies.css";
 import "./MoviesCard/MoviesCard.css";
+import ButtonMore from "../Movies/ButtonMore/ButtonMore";
 
 const SavedMovies = () => (
   <div className="saved-movies">
     <Header />
     <SearchForm />
     <MoviesCardList />
+    <ButtonMore />
     <Footer />
   </div>
 );

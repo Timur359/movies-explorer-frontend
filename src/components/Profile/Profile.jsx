@@ -20,10 +20,10 @@ const Profile = ({ name, email }) => {
             <p className="profile__field_text">E-mail</p>
             <p className="profile__field_value">{email}</p>
           </div>
-          <Link to="edit-profile" className="profile__btn_edit">
+          <Link to="/edit-profile" className="profile__btn_edit">
             Редактировать
           </Link>
-          <Link to="sign-in" className="profile__btn_exit">
+          <Link to="/sign-in" className="profile__btn_exit">
             Выйти из аккаунта
           </Link>
         </div>

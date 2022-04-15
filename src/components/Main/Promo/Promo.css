@@ -20,7 +20,6 @@
 
 .promo__title {
   width: 626px;
-  height: 104px;
   font-family: "Inter", Arial, Helvetica, sans-serif;
   font-weight: 400;
   font-size: 40px;
@@ -90,7 +89,6 @@
 
   .promo__title {
     width: 680px;
-    height: 104px;
     margin: 300px auto 140px auto;
   }
 
