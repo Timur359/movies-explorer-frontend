@@ -11,12 +11,17 @@ const Register = () => {
       textBtn={"Войти"}
       btnUrl={"/sign-in"}
       textAction={"Зарегестрироваться"}
+      title={"Добро пожаловать !"}
       children={
-        <>
+        <div className="input__box">
           <div className="input__name">Имя</div>
-          <input type="text" className="input__field" placeholder="Имя" />
-          <div className="input__line"></div>
-        </>
+          <input
+            type="text"
+            className="input__field"
+            placeholder="Имя"
+            required
+          />
+        </div>
       }
     />
   );

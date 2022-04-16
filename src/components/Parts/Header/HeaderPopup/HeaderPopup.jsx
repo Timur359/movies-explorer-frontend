@@ -12,7 +12,7 @@ export default function HeaderPopup({ isOpen, isClose }) {
         <button className="header-popup__close" onClick={isClose} />
         <nav className="header-popup__link-box">
           <NavLink
-            to="/movies"
+            to="/"
             activeClassName="active"
             className="header-popup__link"
           >

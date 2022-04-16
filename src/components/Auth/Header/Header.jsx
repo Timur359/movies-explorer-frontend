@@ -4,10 +4,10 @@ import "./Header.css";
 
 import logo from "../../../images/logo.svg";
 
-const Header = () => (
+const Header = ({ title }) => (
   <div className="header-auth">
     <img src={logo} className="header__logo" alt="Logo" />
-    <h6 className="header__title">Рады видеть !</h6>
+    <h6 className="header__title">{title}</h6>
   </div>
 );
 

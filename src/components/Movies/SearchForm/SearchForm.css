@@ -1,5 +1,4 @@
 .search-form {
-  height: 222px;
   box-sizing: border-box;
   padding-top: 70px;
 }
@@ -40,8 +39,7 @@
 }
 
 .search-form__input:focus {
-  border: 1px #000 solid;
-  border-radius: 5px;
+  border-bottom: 1px #000 solid;
 }
 
 .search-form__button-form {
@@ -133,7 +131,6 @@ input:checked + .search-form__slide:before {
 
 @media screen and (max-width: 1180px) {
   .search-form {
-    height: 222px;
     box-sizing: border-box;
     padding-left: 30px;
     padding-right: 30px;
@@ -212,11 +209,10 @@ input:checked + .search-form__slide:before {
     margin: 25px auto 25px 19px;
   }
 
-
-
 }
 
 @media screen and (max-width: 510px) {
+
   .search-form__box {
     margin: 0 auto;
   }

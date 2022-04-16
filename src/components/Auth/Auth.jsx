@@ -5,9 +5,9 @@ import Input from "./Input/Input";
 
 import "./Auth.css";
 
-const Auth = ({ children, text, textBtn, btnUrl, textAction }) => (
+const Auth = ({ children, text, textBtn, btnUrl, textAction, title }) => (
   <div className="auth">
-    <Header />
+    <Header title={title} />
     <Input children={children} />
     <Button
       text={text}

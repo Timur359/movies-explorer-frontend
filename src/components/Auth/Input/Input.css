@@ -4,6 +4,14 @@
   margin: 0 auto;
 }
 
+.input__box {
+  margin-bottom: 24px;
+}
+
+.input__box:last-of-type {
+  margin-bottom: 42px;
+}
+
 .input__name {
   font-family: "Inter", Arial, Helvetica, sans-serif;
   font-weight: 400;
@@ -22,19 +30,15 @@
   background: #202020;
   border: none;
   outline: none;
-  margin: 0 auto 10px 0;
+  margin: 0 auto 0 0;
   padding: 0;
   width: 500px;
+  padding-bottom: 10px;
+  border-bottom: 1px solid #424242;
 }
 
-.input__line {
-  border: 1px solid #424242;
-  margin-bottom: 24px;
-}
-
-.input__line:last-of-type {
-  border: 1px solid #424242;
-  margin-bottom: 42px;
+.input__field:focus {
+  border-bottom: 1px solid #4285F4;
 }
 
 @media screen and (max-width: 550px) {

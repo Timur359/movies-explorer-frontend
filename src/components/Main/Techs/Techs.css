@@ -107,10 +107,26 @@
   }
 }
 
+@media screen and (max-width: 760px) {
+
+  .techs__box {
+    justify-content: start;
+    flex-wrap: wrap;
+    margin: 0 53px 0 53px;
+    padding-bottom: 70px;
+  }
+
+  .techs__box_container {
+    margin-bottom: 10px;
+  }
+
+}
+
 @media screen and (max-width: 500px) {
 
   .techs {
     padding: 0 18px;
+    background-color: #202020;
   }
 
   .techs__paragraph {
@@ -138,19 +154,16 @@
   }
 
   .techs__box {
-    display: flex;
     justify-content: space-between;
-    flex-wrap: wrap;
-    margin: 0 53px 0 53px;
-    padding-bottom: 70px;
   }
 
   .techs__box_container {
     margin-bottom: 10px;
-    margin-right: 0;
+    margin-right: 10px;
   }
 
   .techs__box_container:last-of-type {
+    margin-right: 10px;
     margin-bottom: 0;
   }
 

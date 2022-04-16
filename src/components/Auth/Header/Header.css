@@ -25,5 +25,14 @@
     width: 260px;
   }
 
+  .header__title {
+    text-align: center;
+  }
+
+  .header__logo {
+    width: 100%;
+    margin: 56px auto 50px auto;
+  }
+
 }
 

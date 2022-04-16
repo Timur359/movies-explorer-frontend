@@ -24,6 +24,7 @@ const App = () => (
           textBtn={"Регистрация"}
           btnUrl={"/sign-up"}
           textAction={"Войти"}
+          title={"Рады видеть !"}
         />
       }
       exact
