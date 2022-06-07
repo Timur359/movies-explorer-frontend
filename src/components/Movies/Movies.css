@@ -1,0 +1,14 @@
+.movies {
+  width: 100%;
+  background-color: #202020;
+}
+
+.movies__title {
+  color: white;
+  margin: 0 auto;
+  text-align: center;
+  font-family: "Inter", Arial, Helvetica, sans-serif;
+  font-weight: 500;
+  font-size: 30px;
+  line-height: 20px;
+}

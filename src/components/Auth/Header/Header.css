@@ -1,0 +1,38 @@
+.header-auth {
+  width: 500px;
+  margin: 0 auto;
+}
+
+.header__title {
+  font-family: "Inter", Arial, Helvetica, sans-serif;
+  font-weight: 500;
+  font-size: 24px;
+  line-height: 29.05px;
+  color: white;
+  margin: 0 auto 40px auto;
+  text-align: start;
+}
+
+.header__logo {
+  height: 38px;
+  width: 38px;
+  margin: 70px auto 40px 0;
+}
+
+@media screen and (max-width: 550px) {
+
+  .header-auth {
+    width: 260px;
+  }
+
+  .header__title {
+    text-align: center;
+  }
+
+  .header__logo {
+    width: 100%;
+    margin: 56px auto 50px auto;
+  }
+
+}
+

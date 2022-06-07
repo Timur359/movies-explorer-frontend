@@ -1,0 +1,67 @@
+.movies-card {
+  width: 364px;
+  height: 281px;
+  display: flex;
+  flex-wrap: wrap;
+  margin: 0 auto;
+  justify-content: space-between;
+}
+
+.movies-card__image {
+  width: 364px;
+  height: 203px;
+  object-fit: cover;
+}
+
+.movies-card__name {
+  width: 290px;
+  height: 16px;
+  font-family: "Inter", Arial, Helvetica, sans-serif;
+  font-weight: 500;
+  font-size: 13px;
+  line-height: 15.73px;
+  color: white;
+  margin: 16px 12px 17px 16px;
+}
+
+.movies-card__like {
+  width: 30px;
+  height: 30px;
+  background-image: url("../../../images/like.svg");
+  background-repeat: no-repeat;
+  background-size: cover;
+  margin: 9px 16px 10px 0;
+  border: none;
+  background-color: #222222;
+  cursor: pointer;
+}
+
+.movies-card__like_active {
+  width: 30px;
+  height: 30px;
+  background-image: url("../../../images/like-active.svg");
+  background-repeat: no-repeat;
+  background-size: cover;
+  margin: 9px 16px 10px 0;
+  border: none;
+  background-color: rgba(0, 0, 0, 0.08);
+  cursor: pointer;
+}
+
+.movies-card__time {
+  width: 37px;
+  height: 13px;
+  font-family: "Inter", Arial, Helvetica, sans-serif;
+  font-weight: 400;
+  font-size: 11px;
+  line-height: 13.31px;
+  color: #8b8b8b;
+  margin: 0 311px 16px 16px;
+}
+
+@media screen and (max-width: 1220px) {
+  .movies-card__name {
+    width: 260px;
+  }
+
+}
