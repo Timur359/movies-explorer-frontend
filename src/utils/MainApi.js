@@ -109,8 +109,8 @@ export default class Api {
 }
 
 export const MainApi = new Api({
-  baseUrl: "http://localhost:3001/api",
-  //baseUrl: "https://api.movies-explorer-dip.nomoredomains.work/api",
+  //baseUrl: "http://localhost:3001/api",
+  baseUrl: "https://api.movies-explorer-dip.nomoredomains.work/api",
   headers: {
     "Content-Type": "application/json",
   },

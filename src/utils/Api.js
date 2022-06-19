@@ -1,7 +1,7 @@
-export const BASE_URL = "http://localhost:3001/api";
+//export const BASE_URL = "http://localhost:3001/api";
 
-//export const BASE_URL =
-//"https://api.movies-explorer-dip.nomoredomains.work/api";
+export const BASE_URL =
+  "https://api.movies-explorer-dip.nomoredomains.work/api";
 
 const handleOriginalResponse = (res) =>
   res.ok
