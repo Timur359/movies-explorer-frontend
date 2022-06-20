@@ -19,7 +19,7 @@
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
-    "predeploy": "npm run build"
+    "deploy": "npm run build && scp -r ./build/* timur@51.250.17.60:/home/timur/movies-explorer-frontend"
   },
   "eslintConfig": {
     "extends": [

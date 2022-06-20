@@ -256,8 +256,6 @@ const App = () => {
     }, 600);
   };
 
-  console.log(filterSavedMovies);
-
   return (
     <CurrentUserContext.Provider value={currentUser}>
       <Routes>
