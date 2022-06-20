@@ -231,7 +231,6 @@ const App = () => {
         setSearchError("Ничего не найдено");
       } else {
         setSearchError("");
-        setFilterMovie(filterData);
       }
       return filterData;
     }

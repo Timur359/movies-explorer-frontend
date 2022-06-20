@@ -15,7 +15,6 @@ const MoviesCardList = ({
   isLoading,
   searchError,
 }) => {
-  console.log(savedMovies);
   return (
     <div className="movies-card-list">
       {savedMovies.length === 0 ? (
