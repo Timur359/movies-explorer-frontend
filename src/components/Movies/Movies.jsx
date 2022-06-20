@@ -19,7 +19,7 @@ const Movies = ({
   const [selectCategory, setSelectCategory] = useState(
     JSON.parse(localStorage.getItem("checkbox_movies"))
   );
-  const [filteredMovies, setFilterMovies] = useState([]);
+  const [filteredMovies, setFilterMovies] = useState(movies);
   const [currentPage, setCurrentPage] = useState(1);
   const [countriesPerPage, setCountriesPerPage] = useState(12);
 
@@ -43,7 +43,6 @@ const Movies = ({
     let updateMovies = movies;
     if (selectCategory) {
       updateMovies = updateMovies.filter((movie) => movie.duration < 20);
-      localStorage.setItem("allMovies", JSON.stringify(updateMovies));
     }
     setFilterMovies(updateMovies);
   };
