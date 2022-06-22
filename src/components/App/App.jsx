@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { Route, Routes, useLocation } from "react-router-dom";
+import { Route, Routes, useLocation, Navigate } from "react-router-dom";
 import { useNavigate } from "react-router";
 
 import Main from "../Main/Main";
@@ -63,6 +63,36 @@ const App = () => {
     }
   }, []);
 
+  const getAllMoviesData = () => {
+    getAllMovies()
+      .then((data) => {
+        localStorage.setItem("allMovies", JSON.stringify(data));
+        setAllMovies(data);
+        setIsLoading(true);
+        localStorage.setItem(
+          "searchMovies",
+          JSON.stringify(JSON.parse(localStorage.getItem("allMovies")))
+        );
+      })
+      .catch((err) => {
+        localStorage.removeItem("allMovies");
+        console.error(err.message);
+      });
+  };
+
+  const getSavedMovies = () => {
+    MainApi.getSavedMovies()
+      .then((data) => {
+        const savedMovie = data.map((item) => ({ ...item, id: item.movieId }));
+        localStorage.setItem("savedMovies", JSON.stringify(savedMovie));
+        setSavedMovies(savedMovie);
+        setFilterSavedMovies(savedMovie);
+      })
+      .catch(() => {
+        localStorage.removeItem("savedMovies");
+      });
+  };
+
   const onLogin = (email, password) => {
     authorize({ email, password })
       .then((data) => {
@@ -90,36 +120,10 @@ const App = () => {
       });
   };
 
-  const getAllMoviesData = () => {
-    getAllMovies()
-      .then((data) => {
-        localStorage.setItem("allMovies", JSON.stringify(data));
-        setAllMovies(data);
-        setIsLoading(true);
-      })
-      .catch((err) => {
-        localStorage.removeItem("allMovies");
-        console.error(err.message);
-      });
-  };
-
-  const getSavedMovies = () => {
-    MainApi.getSavedMovies()
-      .then((data) => {
-        const savedMovies = data.map((item) => ({ ...item, id: item.movieId }));
-        localStorage.setItem("savedMovies", JSON.stringify(savedMovies));
-        setSavedMovies(savedMovies);
-      })
-      .catch(() => {
-        localStorage.removeItem("savedMovies");
-      });
-  };
-
   const handleUpdateUser = (data) => {
     MainApi.saveUserChanges(data)
       .then((res) => {
         setCurrentUser(res);
-        setIsOpen(!isOpen);
       })
       .catch((err) => {
         console.error(err.message);
@@ -150,6 +154,8 @@ const App = () => {
 
     localStorage.removeItem("allMovies");
     localStorage.removeItem("savedMovies");
+    localStorage.removeItem("searchTextMovies");
+    localStorage.removeItem("searchTextSavedMovies");
     setSavedMovies([]);
     setFilterMovie([]);
 
@@ -160,17 +166,15 @@ const App = () => {
     if (isLoggedIn) {
       getAllMoviesData();
       getSavedMovies();
-      localStorage.setItem("checkbox_movies", JSON.stringify(selectCategory));
-      localStorage.setItem("checkbox_saved", JSON.stringify(selectCategory));
+      localStorage.setItem(
+        "searchSavedMovies",
+        JSON.stringify(JSON.parse(localStorage.getItem("searchMovies")))
+      );
     }
   }, [isLoggedIn]);
 
   const applyFilter = () => {
-    let updateMovie = allMovies;
-    if (selectCategory) {
-      updateMovie = updateMovie.filter((movie) => movie.duration < 20);
-    }
-    setFilterMovie(updateMovie);
+    setFilterMovie(allMovies);
     setFilterSavedMovies(savedMovies);
   };
 
@@ -219,8 +223,6 @@ const App = () => {
     setIsOpen(!isOpen);
   };
 
-  const [query, setQuery] = React.useState("");
-
   const searchFilter = (data, searchQuery) => {
     if (searchQuery) {
       const regex = new RegExp(searchQuery, "gi");
@@ -237,24 +239,6 @@ const App = () => {
     return [];
   };
 
-  const searchHandler = (searchQuery) => {
-    setIsLoading(false);
-    setTimeout(() => {
-      setQuery(searchQuery);
-      setFilterMovie(searchFilter(allMovies, searchQuery));
-      setIsLoading(true);
-    }, 600);
-  };
-
-  const searchHandlerSaved = (searchQuery) => {
-    setIsLoading(false);
-    setTimeout(() => {
-      setQuery(searchQuery);
-      setFilterSavedMovies(searchFilter(savedMovies, searchQuery));
-      setIsLoading(true);
-    }, 600);
-  };
-
   return (
     <CurrentUserContext.Provider value={currentUser}>
       <Routes>
@@ -264,14 +248,17 @@ const App = () => {
             path="/movies"
             element={
               <Movies
-                movies={filterMovie}
+                movies={allMovies}
                 isLoading={isLoading}
                 isMovieAdded={isMovieAdded}
                 movieStatusHandler={movieStatusHandler}
                 handleSelectCategory={handleSelectCategory}
                 setSelectCategory={setSelectCategory}
-                onSubmitSearch={searchHandler}
                 searchError={searchError}
+                setFilterMovie={setFilterMovie}
+                searchFilter={searchFilter}
+                setIsLoading={setIsLoading}
+                filterMovie={filterMovie}
               />
             }
           />
@@ -279,15 +266,16 @@ const App = () => {
             path="/saved-movies"
             element={
               <SavedMovies
-                savedMovies={filterSavedMovies}
+                savedMovies={savedMovies}
                 deleteMovie={deleteMovie}
                 setSelectCategory={setSelectCategory}
                 isLoading={isLoading}
-                setIsLoading={setIsLoading}
                 getSavedMovies={getSavedMovies}
-                movies={allMovies}
-                onSubmitSearch={searchHandlerSaved}
                 searchError={searchError}
+                setFilterSavedMovies={setFilterSavedMovies}
+                searchFilter={searchFilter}
+                setIsLoading={setIsLoading}
+                filterSavedMovies={filterSavedMovies}
               />
             }
           />
@@ -305,22 +293,32 @@ const App = () => {
             }
           />
         </Route>
+
         <Route
           path="/signin"
-          element={<Auth title={"Рады видеть !"} setAuthInfo={onLogin} />}
+          element={
+            isLoggedIn ? (
+              <Navigate to="/movies" replace />
+            ) : (
+              <Auth title={"Рады видеть !"} setAuthInfo={onLogin} />
+            )
+          }
           exact
         />
         <Route
           path="/signup"
           element={
-            <Register
-              title={"Добро пожаловать !"}
-              handleSubmitReg={onRegister}
-            />
+            isLoggedIn ? (
+              <Navigate to="/movies" replace />
+            ) : (
+              <Register
+                title={"Добро пожаловать !"}
+                handleSubmitReg={onRegister}
+              />
+            )
           }
           exact
         />
-
         <Route path="*" element={<Error />} />
       </Routes>
     </CurrentUserContext.Provider>

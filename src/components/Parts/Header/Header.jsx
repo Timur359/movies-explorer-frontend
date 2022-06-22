@@ -10,7 +10,7 @@ import HeaderPopup from "./HeaderPopup/HeaderPopup";
 const Header = ({ active }) => {
   const [isHeaderPopup, setIsHeaderPopup] = useState(false);
 
-  const openHaederPopup = () => {
+  const openHeaderPopup = () => {
     setIsHeaderPopup(!isHeaderPopup);
   };
 
@@ -42,15 +42,15 @@ const Header = ({ active }) => {
             className="header__acc_logo"
             alt="Иконка аккаунта"
           />
-          <NavLink to="/profile" className="header__acc_text">
+          <Link to="/profile" className="header__acc_text">
             Аккаунт
-          </NavLink>
+          </Link>
         </div>
         <button
           className={`header__eche ${active ? "header__eche_main" : ""}`}
-          onClick={openHaederPopup}
+          onClick={openHeaderPopup}
         />
-        <HeaderPopup isOpen={isHeaderPopup} isClose={openHaederPopup} />
+        <HeaderPopup isOpen={isHeaderPopup} isClose={openHeaderPopup} />
       </div>
     </>
   );

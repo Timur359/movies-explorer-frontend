@@ -5,9 +5,13 @@ import "../../Parts/Header/Header.css";
 
 import icon from "../../../images/icon.svg";
 
-const SearchForm = ({ value, handleSelectCategory, onSearch }) => {
-  const [searchText, setSearchText] = useState("");
-
+const SearchForm = ({
+  value,
+  handleSelectCategory,
+  onSearch,
+  searchText,
+  setSearchText,
+}) => {
   const handleSubmit = (e) => {
     e.preventDefault();
     if (!searchText) {

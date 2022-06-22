@@ -12,16 +12,21 @@ const Movies = ({
   isMovieAdded,
   movies,
   isLoading,
-  onSubmitSearch,
   searchError,
+  filterMovie,
+  setFilterMovie,
+  searchFilter,
+  setIsLoading,
 }) => {
-  const [inputSearch, setInputSearch] = useState("");
   const [selectCategory, setSelectCategory] = useState(
     JSON.parse(localStorage.getItem("checkbox_movies"))
   );
   const [filteredMovies, setFilterMovies] = useState(movies);
   const [currentPage, setCurrentPage] = useState(1);
   const [countriesPerPage, setCountriesPerPage] = useState(12);
+  const [searchText, setSearchText] = useState(
+    localStorage.getItem("searchTextMovies") || ""
+  );
 
   const lastMovieIndex = currentPage * countriesPerPage;
 
@@ -44,14 +49,38 @@ const Movies = ({
     if (selectCategory) {
       updateMovies = updateMovies.filter((movie) => movie.duration < 20);
     }
-    setFilterMovies(updateMovies);
+    if (searchText) {
+      const regex = new RegExp(searchText, "gi");
+      updateMovies = updateMovies.filter(
+        (item) => regex.test(item.nameRU) || regex.test(item.nameEN)
+      );
+    }
+    localStorage.setItem("searchMovies", JSON.stringify(updateMovies));
+    setFilterMovies(JSON.parse(localStorage.getItem("searchMovies")));
   };
 
   useEffect(() => {
     applyFilter();
-  }, [selectCategory, movies]);
+  }, [selectCategory, movies, filterMovie]);
 
-  const filterOn = (e) => {
+  const searchHandler = (searchQuery) => {
+    localStorage.setItem("searchTextMovies", searchQuery);
+    setIsLoading(false);
+    setTimeout(() => {
+      setFilterMovie(
+        searchFilter(movies, localStorage.getItem("searchTextMovies"))
+      );
+      localStorage.setItem(
+        "searchMovies",
+        JSON.stringify(
+          searchFilter(movies, localStorage.getItem("searchTextMovies"))
+        )
+      );
+      setIsLoading(true);
+    }, 600);
+  };
+
+  const filterOn = () => {
     setSelectCategory(!selectCategory);
     localStorage.setItem("checkbox_movies", JSON.stringify(!selectCategory));
   };
@@ -60,11 +89,12 @@ const Movies = ({
     <div className="movies">
       <Header setSelectCategory={setSelectCategory} />
       <SearchForm
-        changeInput={(e) => setInputSearch(e.target.value)}
         handleSelectCategory={filterOn}
-        onSearch={onSubmitSearch}
+        onSearch={searchHandler}
         savedMovies={false}
         value={JSON.parse(localStorage.getItem("checkbox_movies"))}
+        searchText={searchText}
+        setSearchText={setSearchText}
       />
       <MoviesCardList
         movies={currentMovies}
