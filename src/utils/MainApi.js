@@ -32,28 +32,6 @@ export default class Api {
     }).then(this._checkResponse);
   }
 
-  deleteCard(cardId) {
-    return fetch(`${this._cardsUrl}/${cardId}`, {
-      method: "DELETE",
-      headers: this._headers,
-    }).then(this._checkResponse);
-  }
-
-  likedCard(cardId) {
-    return fetch(`${this._cardsUrl}/${cardId}/likes`, {
-      method: "PUT",
-      headers: this._headers,
-    }).then(this._checkResponse);
-  }
-
-  //Снятие "Лайка"
-  dislikedCard(cardId) {
-    return fetch(`${this._cardsUrl}/${cardId}/likes`, {
-      method: "DELETE",
-      headers: this._headers,
-    }).then(this._checkResponse);
-  }
-
   getSavedMovies() {
     return fetch(`${this._baseUrl}/movies`, {
       method: "GET",

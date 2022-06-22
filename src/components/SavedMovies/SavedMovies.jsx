@@ -16,17 +16,21 @@ const SavedMovies = ({
   movieStatusHandler,
   handleSelectCategory,
   isLoading,
-  onSubmitSearch,
+  filterSavedMovies,
   searchError,
+  setFilterSavedMovies,
+  searchFilter,
+  setIsLoading,
 }) => {
-  const [inputSearch, setInputSearch] = useState("");
   const [selectCategory, setSelectCategory] = useState(
     JSON.parse(localStorage.getItem("checkbox_saved"))
   );
   const [filteredMovies, setFilterMovies] = useState([]);
   const [currentPage, setCurrentPage] = useState(1);
   const [countriesPerPage, setCountriesPerPage] = useState(12);
-  const [moviesToRender, setMoviesToRender] = useState([]);
+  const [searchText, setSearchText] = useState(
+    localStorage.getItem("searchTextSavedMovies") || ""
+  );
 
   const lastMovieIndex = currentPage * countriesPerPage;
 
@@ -45,7 +49,34 @@ const SavedMovies = ({
     if (selectCategory) {
       updateMovies = updateMovies.filter((movie) => movie.duration < 20);
     }
-    setFilterMovies(updateMovies);
+    if (searchText) {
+      const regex = new RegExp(searchText, "gi");
+      updateMovies = updateMovies.filter(
+        (item) => regex.test(item.nameRU) || regex.test(item.nameEN)
+      );
+    }
+    localStorage.setItem("searchSavedMovies", JSON.stringify(updateMovies));
+    setFilterMovies(JSON.parse(localStorage.getItem("searchSavedMovies")));
+  };
+
+  const searchHandlerSaved = (searchQuery) => {
+    localStorage.setItem("searchTextSavedMovies", searchQuery);
+    setIsLoading(false);
+    setTimeout(() => {
+      setFilterSavedMovies(
+        searchFilter(savedMovies, localStorage.getItem("searchTextSavedMovies"))
+      );
+      localStorage.setItem(
+        "searchSavedMovies",
+        JSON.stringify(
+          searchFilter(
+            savedMovies,
+            localStorage.getItem("searchTextSavedMovies")
+          )
+        )
+      );
+      setIsLoading(true);
+    }, 600);
   };
 
   const filterOn = () => {
@@ -58,38 +89,32 @@ const SavedMovies = ({
   const nextPage = () => setCurrentPage((prev) => prev + 1);
 
   useEffect(() => {
-    setMoviesToRender(currentMovies);
-  }, [savedMovies, filteredMovies, lastMovieIndex]);
-
-  useEffect(() => {
     applyFilter();
-  }, [selectCategory, savedMovies]);
+  }, [selectCategory, savedMovies, filterSavedMovies]);
 
   return (
     <div className="saved-movies">
       <Header handleSelectCategory={handleSelectCategory} />
       <SearchForm
-        changeInput={(e) => setInputSearch(e.target.value)}
         handleSelectCategory={filterOn}
         value={JSON.parse(localStorage.getItem("checkbox_saved"))}
-        onSearch={onSubmitSearch}
+        onSearch={searchHandlerSaved}
+        searchText={searchText}
+        setSearchText={setSearchText}
       />
       <MoviesCardList
-        savedMovies={moviesToRender}
+        savedMovies={currentMovies}
         deleteMovie={deleteMovie}
         isMovieAdded={isMovieAdded}
         movieStatusHandler={movieStatusHandler}
         isLoading={isLoading}
         searchError={searchError}
       />
-      {filteredMovies.length > currentMovies.length && (
-        <ButtonMore nextPage={nextPage} />
-      )}
+      {JSON.parse(localStorage.getItem("searchSavedMovies")).length >
+        currentMovies.length && <ButtonMore nextPage={nextPage} />}
       <Footer />
     </div>
   );
 };
 
 export default SavedMovies;
-
-/*      */

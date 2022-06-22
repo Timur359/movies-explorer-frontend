@@ -12,6 +12,7 @@ const Popup = ({ isOpen, changePopup, handleSubmitUser }) => {
   const [emailError, setEmailError] = useState(false);
 
   const [formValid, setFormValid] = useState(false);
+  const [editStatus, setEditStatus] = useState(false);
 
   const currentUser = useContext(CurrentUserContext);
 
@@ -30,6 +31,7 @@ const Popup = ({ isOpen, changePopup, handleSubmitUser }) => {
   useEffect(() => {
     setName(currentUser.name);
     setEmail(currentUser.email);
+    setEditStatus(false);
   }, [isOpen]);
 
   const handleSubmit = (e) => {
@@ -38,6 +40,8 @@ const Popup = ({ isOpen, changePopup, handleSubmitUser }) => {
       name: name,
       email: email,
     });
+    setEditStatus("Данные успешно обновлены !");
+    setFormValid(!formValid);
   };
 
   const nameHandler = (e) => {
@@ -79,6 +83,7 @@ const Popup = ({ isOpen, changePopup, handleSubmitUser }) => {
       onClick={changePopup}
     >
       <form className="popup__box" onClick={(e) => e.stopPropagation()}>
+        <h2 className="popup__title">Редактирование профиля</h2>
         <input
           type="text"
           className="popup__field"
@@ -116,6 +121,7 @@ const Popup = ({ isOpen, changePopup, handleSubmitUser }) => {
         >
           Редактировать
         </button>
+        <p className="popup__edit-text">{editStatus}</p>
       </form>
     </div>
   );
